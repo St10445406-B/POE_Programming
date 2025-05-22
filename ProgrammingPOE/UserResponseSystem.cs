@@ -92,11 +92,29 @@ namespace ProgPOE
                 {
                     Console.WriteLine($"\nBot: {questions[UserInput.ToLower()]}\n");
                 }
+              
                 //if the user inputted something that is not in the key
+                //it will then trigger this that is keyword recognition
                 else
                 {
-                    Console.WriteLine("\nBot: I do not understand that question. plese refer to the key or check spelling\n");
+                    bool found = false;
+                    foreach (var keyword in questions.Keys)
+                    {
+                        if (UserInput.IndexOf(keyword, StringComparison.OrdinalIgnoreCase) >= 0)
+                        {
+                            Console.WriteLine(questions[keyword]);
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (!found)
+                    {
+                        Console.WriteLine("Sorry, I don't have an answer for that.");
+                    }
                 }
+            
+                
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write($"{name}: ");
                 UserInput = Console.ReadLine();
