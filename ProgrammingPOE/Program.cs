@@ -1,4 +1,4 @@
-﻿using ProgPOE;
+﻿using ProgrammingPOE;
 
 namespace ProgrammingPOE
 {
